@@ -4,7 +4,7 @@
             <input type="text" placeholder="Nombre del personaje" v-model="searchPersonaje">
         </form>
         <button @click="getPersonaje">Search</button>
-        <EventLayout></EventLayout>
+        <!-- <EventLayout></EventLayout> -->
         <router-view :searchPersonaje="searchPersonaje"/>
     </div>
     
@@ -13,24 +13,26 @@
 <script>
     import { ref } from "vue";
     import EventService  from "@/services/EventService";
-    import EventLayout from "./event/EventLayout.vue";
+    // import EventLayout from "./event/EventLayout.vue";
+    import router from "@/router";
     export default {
     name: "SearchPersonaje",
     props: ["name"],
     setup(props) {
+        const event = ref(null);
         let searchPersonaje = ref("");
-  
         let searchValue = (searchPersonaje.value).toLowerCase();
 
         function getPersonaje() {
             EventService.getEventName(props.name)
                 .then((response) => {
-                    searchValue = response.data.results;
+                    event.value = response.data;
+                    searchValue = event.value.name;
                     console.log(searchValue);
                 })
                 .catch((error) => {
                     console.log("Error de solicitud", error);
-                    this.$router.push({
+                    router.push({
                         name: "404Resource",
                         params: { resource: "searchPersonaje" }
                     });
@@ -40,7 +42,7 @@
             searchPersonaje, getPersonaje
         };
     },
-    components: { EventLayout }
+    // components: { EventLayout }
 }
 </script>
 

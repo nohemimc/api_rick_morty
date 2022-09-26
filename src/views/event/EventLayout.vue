@@ -28,6 +28,7 @@
 <script>
 import { ref } from "vue";
 import EventService from "@/services/EventService";
+import router from "@/router";
 export default {
     props: ["id"],
     setup(props) {
@@ -39,7 +40,7 @@ export default {
             .then((response) => {
                 event.value = response.data;
                 statusColor.value = event.value.status;
-                // console.log(event.value.status);
+                console.log(event.value.status);
             })
             .catch((error) => {
                 console.log("Error", error);
@@ -48,7 +49,7 @@ export default {
                  Método router.push: "this.$router.push".
                  Permite navegar a otra URL diferente.
                 */
-                this.$router.push({
+                router.push({
                     name: "404Resource",
                     params: { resource: "event"}
                 });

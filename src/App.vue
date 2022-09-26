@@ -3,20 +3,9 @@
 		<router-link to="/">Home</router-link> |
 		<router-link to="/about">About</router-link>
 	</nav>
-	<div class="container-search">
-		<SearchPersonaje></SearchPersonaje>
-	</div>
-	<router-view />
+	<router-view/>
 </template>
 
-<script>
-import SearchPersonaje from "./views/SearchPersonaje.vue";
-export default {
-	components: {
-		SearchPersonaje
-	}
-}
-</script>
 <style>
 #app {
 	font-family: Avenir, Helvetica, Arial, sans-serif;
@@ -41,12 +30,6 @@ nav a {
 
 nav a.router-link-exact-active {
 	color: #42b983;
-}
-
-.container-search {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
 }
 
 </style>

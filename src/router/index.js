@@ -14,7 +14,7 @@ const routes = [
     component: CardList
   },
   {
-    path: "/Character/:name",
+    path: "/Character/:id",
     name: "SearchPersonaje", 
     props: true,
     component: SearchPersonaje,
