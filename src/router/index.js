@@ -3,6 +3,7 @@ import CardList from "@/views/CardList.vue";
 import EventLayout from "@/views/event/EventLayout.vue";
 import EventDetails from "@/views/event/EventDetails.vue";
 import EventLocation from "@/views/event/EventLocation.vue";
+import SearchPersonaje from "@/views/SearchPersonaje.vue"
 import NotFound from "@/views/NotFound.vue";
 import NProgress from "nprogress";
 
@@ -11,6 +12,12 @@ const routes = [
     path: '/',
     name: 'CardList',
     component: CardList
+  },
+  {
+    path: "/Character/:name",
+    name: "SearchPersonaje", 
+    props: true,
+    component: SearchPersonaje,
   },
   {
 		path: "/Character/:id", //Pasar props al router (rutas dinámicas)
@@ -52,7 +59,7 @@ const routes = [
 ]
 
 const router = createRouter({
-  //Historial hash, útil para apps sin servidor
+  //Historial hash, no requiere configuración del servidor
   history: createWebHashHistory(process.env.BASE_URL), //Variables de entorno a un archivo .env.
   routes
 });

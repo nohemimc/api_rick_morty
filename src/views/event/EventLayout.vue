@@ -15,10 +15,10 @@
                 <span>Status: {{ event ? event.status : "" }}</span>
             </div>
             <img :src=" event ? event.image : '' " alt="event.name">
-            <nav class="nav-datails">
+            <nav class="nav-details">
                 <router-link :to="{ name: 'EventDetails'}" >Details</router-link>
                     |
-                    <router-link :to="{ name: 'EventLocation'}" >Location</router-link>
+                <router-link :to="{ name: 'EventLocation'}" >Location</router-link>
             </nav>
             <router-view :event="event"/>
         </div>
@@ -42,8 +42,12 @@ export default {
                 // console.log(event.value.status);
             })
             .catch((error) => {
-                console.log(error);
+                console.log("Error", error);
 
+                /*
+                 Método router.push: "this.$router.push".
+                 Permite navegar a otra URL diferente.
+                */
                 this.$router.push({
                     name: "404Resource",
                     params: { resource: "event"}

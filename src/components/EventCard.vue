@@ -1,5 +1,8 @@
 <template>
-    <!-- router-link: Permite crear un enlace. Esto permite que Vue Router cambie la URL sin recargar la página, maneje la generación de URL y su codificación. -->
+    <!-- 
+        router-link: Permite crear un enlace. Esto permite que Vue Router cambie la URL sin recargar la página, maneje la generación de URL y su codificación. 
+        <router-link :to="..."> es el equivalente a llamar this.$router.push(...)
+    -->
     <router-link
         class="event-link"
         :to = "{
@@ -12,7 +15,7 @@
             <div class="status">
                 <span v-if="statusColorR" class="status-icon-r"></span>
                 <span v-else-if="statusColorG" class="status-icon-g"></span>
-                <span>Status {{event.status}}</span>
+                <span>Status: {{event.status}}</span>
             </div>
             <img :src="event.image" :alt="event.name">
         </div>

@@ -15,6 +15,7 @@
 import { ref } from "vue";
 import EventCard from "@/components/EventCard.vue";
 import EventService from "@/services/EventService.js"
+import router from "@/router";
 
 export default {
     name: "CardList",
@@ -41,9 +42,17 @@ export default {
             EventService.getEventsPage(page.value)
                 .then((response) => {
                 events.value = response.data.results;
-                console.log("events:", response.data.results);
+                // console.log("events:", response.data.results);
                 })
-                .catch();
+                .catch(() => {
+                    if(page.value >= 43){
+                        console.log("There are no more pages to display");
+                        router.push({
+                            name: "404Resource",
+                            params: { resource: "page"}
+                        })
+                    }
+                });
         }
         return {
             events,
@@ -58,9 +67,11 @@ export default {
 
 <style lang="scss"> 
     @import "../assets/styles.scss";
+
     .container {
         display: flex;
         flex-wrap: wrap;
         justify-content: center;
     }
+
 </style>

@@ -1,5 +1,7 @@
 <template>
-	<p>{{ event ? event.location.name : "" }}</p>
+	<div>
+		<p>{{ event ? event.location.name : "" }}</p>
+	</div>
 </template>
 
 <script>
